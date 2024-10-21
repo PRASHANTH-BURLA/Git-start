@@ -1,5 +1,5 @@
-let a=10;
-if(a/2==0){
+let x=10;
+if(x/2==0){
 console.log("even");
 }
 else{
