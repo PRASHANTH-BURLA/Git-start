@@ -1,4 +1,4 @@
-let x=10;
+let x=20;
 if(x/2==0){
 console.log("even");
 }
