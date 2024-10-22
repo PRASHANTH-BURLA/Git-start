@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dice Assignment</title>
+    <style>
+        body{
+            display:flex;
+            flex-direction:column;
+            justify-content:center;
+            align-items:center;
+            background-color:white;
+            /* color:white; */
+        }
+        #members{
+            height:200px;
+            width:300px;
+            display:flex;
+            flex-direction:row;
+            justify-content:center;
+            align-items:center;
+            justify-content:space-evenly;
+            /* border:1px solid red; */
+            
+        }
+        #members>div{
+            height:80px;
+            width:80px;
+            /* border:1px solid lightgrey; */
+            border-radius:5px;
+            margin-top:-25px;
+            text-align:center;
+            align-content:center;
+        }
+        #winner{
+            height: 50px;
+            width:300px;
+            border:1px solid lightgreen;
+            border-radius:5px;
+            margin-top:40px;
+            text-align:center;
+            align-content:center;
+            color:#ffd700;
+            /* color:white; */
+            font-size:18px;
+        }
+        #rollbtn{
+            background-color:#ffd700;
+            color:#1a1a40;
+            border-radius:3px;
+            text-align:center;
+            width:140px;
+            cursor:pointer;
+            border:1px solid #350644;
+            height:25px;
+        }
+        #stopdice{
+            background-color:#ffd700;
+            color:#1a1a40;
+            border-radius:3px;
+            text-align:center;
+            width:140px;
+            cursor:pointer;
+            border:1px solid #350644;
+            height:25px;
+        }
+        #memberpoints{
+            display:flex;
+            flex-direction:row;
+            margin-top:30px;
+            text-align:center;
+            
+        }
+        .m1v1{
+            height:100px;
+            width:100px;
+            border:1px solid #a5cee4;
+            text-align:center;
+            align-content:center;
+            color:lightblue;
+        }
+        /* .m1v2{
+            margin-top:20px;
+            
+        } */
+        #main{
+            display:flex;
+            flex-direction:column;
+            justify-content:center;
+            align-items:center;
+            background-color:#1a1a40;
+            width:350px;
+            height:500px;
+            border-radius:12px;
+            margin-top:30px;
+        }
+        #main1{
+            display:flex;
+            flex-direction:column;
+            justify-content:center;
+            align-items:center;
+            margin-bottom:30px;
+            height:400px;
+        }
+        .dice{
+            color:#ffd700;
+            /* background-color:#ffd700; */
+            border:1px solid #807a9e;
+        }
+        #member1{
+            border:1px solid lightblue;
+        }
+        #member2{
+            border:1px solid lightblue;
+        }
+        #member3{
+            border:1px solid lightblue;
+        }
+        #mv1{
+            border-color: lightyellow;
+        }
+        #mv2{
+            border-color: lightgreen;
+        }
+        #mv3{
+            border-color:lightblue;
+        }
+        
+    </style>
+</head>
+<body>
+    <div id="main">
+        <div id="main1">
+    <div id="winner">Let's Play</div>
+<div id="members">
+    <div id="member1" class="dice">
+        <!-- <div class="child"></div> -->
+    </div>
+    <div id="member2" class="dice"></div>
+    <div id="member3" class="dice"></div>
+</div>
+<div>
+    <button id="rollbtn" onclick="rbtn()">ROLL THE DICE</button>
+    <button id="stopdice" onclick="sbtn()">STOP DICE</button>
+</div>
+<div id="memberpoints">
+    <div class="m1v1" id="mv1">A Score</div>
+    <div class="m1v1" id="mv2">B Score</div>
+    <div class="m1v1" id="mv3">C Score</div>
+</div>
+</div>
+</div>
+</body>
+</html>
+<script>
+    var i=0;
+    var k=0;
+    let l=0;
+    let diceid;
+    let kid;
+    let lid;
+    let i1;
+    let k1;
+    let l1;
+    let ok;
+    function rbtn(){
+        diceid=setInterval(function(){
+         i++;
+            document.querySelector("#member1").innerText=i;
+            if(i==6){
+                i=0;
+            }
+    }, 33,
+    
+            kid=setInterval(function(){
+            k++;
+            document.querySelector("#member2").innerText=k;
+            if(k==6){
+                k=0;
+            }
+        }, 61,
+
+        lid=setInterval(function(){
+            l++;
+            document.querySelector("#member3").innerText=l;
+            if(l==6){
+             l=0;
+            }
+        },73)));
+    } 
+       
+    function sbtn(){
+        clearInterval(diceid);
+        clearInterval(kid);
+        clearInterval(lid);
+
+        if(i==i){
+          i1=  document.querySelector("#mv1").innerText=i;
+        };
+        if(k==k){
+            k1=document.querySelector("#mv2").innerText=k;
+        };
+        if(l==l){
+            l1=document.querySelector("#mv3").innerText=l;
+        };
+        let max;
+        if(i1>k1 && i1>l1){
+             max="A is winner";
+        };
+        if(k1>i1 && k1>l1){
+            max="B is winner";
+        };
+        if(l1>i1 && l1>k1){
+            max="C is winner";
+        };
+        if(i1==k1 || i1==l1){
+            max="Roll again";
+        };
+        if(k1==i1 || k1==l1){
+            max="Roll again";
+        };
+        if(l1==i1 || l1==k1){
+            max="Roll again";
+        };
+        if(i1==k1 && i1==l1){
+            max="Match Drawn";
+        };
+        // if(max.innerText == "a is winner"){
+        // document.querySelector("#winner").style.backgroundColor="green" .color="white";
+        // };
+        // if(max == "b is winner"){
+        //     document.querySelector("#winner").style.color="white" .backgroundColor="green";
+        // };
+        
+        document.querySelector("#winner").innerText=max;
+
+        if(document.querySelector("#winner").innerText=="A is winner"){
+        document.querySelector("#winner").style.color="white", document.querySelector("#winner").style.backgroundColor="green";
+        };
+        if(document.querySelector("#winner").innerText=="B is winner"){
+            document.querySelector("#winner").style.color="white", document.querySelector("#winner").style.backgroundColor="green";
+            // document.querySelector("#winner").style.backgroundColor="green";
+        };
+        if(document.querySelector("#winner").innerText=="C is winner"){
+            document.querySelector("#winner").style.color="white", document.querySelector("#winner").style.backgroundColor="green";
+            // document.querySelector("#winner").style.backgroundColor="green";
+        };
+        if(document.querySelector("#winner").innerText=="Roll again"){
+            document.querySelector("#winner").style.color="orange", document.querySelector("#winner").style.backgroundColor="";
+        };
+        if(document.querySelector("#winner").innerText=="Match Drawn"){
+            document.querySelector("#winner").style.color="white", document.querySelector("#winner").style.backgroundColor="red";
+            // document.querySelector("#winner").style.backgroundColor="red";
+        };
+        // document.querySelector("#winner").style.color="red";
+        
+
+    }
+        // let or;
+        // if(i1==k1 || i1==l1){
+        //     or="roll again";
+        // };
+        // if(k1==i1 || k1==l1){
+        //     or="roll again";
+        // };
+        // if(l1==i1 || l1==k1){
+        //     or="roll again";
+        // };
+        // document.querySelector("#winner").innerText="roll again";
+
+    
+
+    //         if(i1>k1&&l1){
+
+    //             maxNo=i1;
+    //         };
+    //         if(k1>i1&&l1){
+    //             maxNo=k1;
+    //         };
+    //         if(l1>i1&&k1){
+    //             maxNo=l1;
+    //         };
+    //         document.querySelector("#winner").innerText=maxNo;
+    //     }
+    //    console.log( findMaxNumber(i,k,l));
+
+
+
+
+        // };
+        // if(i1>k1&l1){
+        //     document.querySelector("#winner").innerText="a is winner";
+        // };
+        // if(k1>i1&l1){
+        //     document.querySelector("#winner").innerText="b is winner";
+        // };
+        // if(l1>i1&k1){
+        //     document.querySelector("#winner").innerText="c is winner";
+        // };
+        // if(i1==k1&l1){
+        //     document.querySelector("#winner").innerText="roll again";
+        // };
+
+
+        // if(i1=k1||l1){
+        //     document.querySelector("#winner").innerText="roll again";
+        // };
+        // if(k1=i1||l1){
+        //     document.querySelector("#winner").innerText="roll again";
+        // };
+        // if(l1==i1||k1){
+        //     document.querySelector("#winner").innerText="roll again";
+        // };
+
+
+        // if(i1==k1&&l1){
+        //     document.querySelector("#winner").innerText="match drawn";
+        // };#ffd700-gold, #dc143c-red, #1a1a40-dark blue
+    
+
+
+</script>
+
